@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Instareddit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "css/normalize.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/semantic.min.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/style.css" %}" media="screen">
+</head>
+<body>
+
+<app></app>
+
+{% include "vue-templates/app-vue.html" %}
+{% include "vue-templates/card-vue.html" %}
+{% include "vue-templates/subreddit-label-vue.html" %}
+
+<script type="text/javascript" data-main="{% static "js/app.js" %}"
+        src="{% static "js/vendor/require.min.js" %}"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<script type="text/x-template" id="card-template">
+    {% verbatim %}
+    <div class="ui segment raised centered card">
+
+        {{{ picture.html }}}
+
+        <div class="content">
+            <a class="header" href="{{picture.permalink}}">{{picture.title}}</a>
+            <div class="meta">
+                <span>at {{picture.timestamp}} by u/{{picture.user}} </span>
+            </div>
+        </div>
+    </div>
+    {% endverbatim %}
+</script>

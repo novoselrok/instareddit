@@ -1,0 +1,1 @@
+web: gunicorn instareddit_project.wsgi --log-file -

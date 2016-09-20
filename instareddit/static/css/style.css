@@ -1,0 +1,32 @@
+.ui.card {
+  width: inherit;
+}
+
+body, .labels {
+  margin-top: 1em;
+}
+
+body {
+  padding-bottom: 1em;
+}
+
+.actions > div {
+  margin: 1rem 0;
+}
+
+#label-title {
+    margin: 0.5rem 0;
+}
+
+#bookmark-link {
+    overflow: auto;
+    font-family: monospace;
+}
+
+i.delete {
+    cursor: pointer;
+}
+
+div.inline.loader {
+    margin-right: 5px;
+}

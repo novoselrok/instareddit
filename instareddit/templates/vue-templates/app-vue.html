@@ -1,0 +1,42 @@
+<script type="text/x-template" id="app-template">
+    {% verbatim %}
+    <!-- Input -->
+    <div class="ui text container" id="app">
+        <div class="ui action labeled input fluid">
+            <div class="ui label">
+                r/
+            </div>
+            <input name="country" placeholder="Add a subreddit" @keyup.enter="addSubreddit"
+                   id="subreddit-input">
+            <div class="ui teal button" @click="addSubreddit">
+                <i class="add icon"></i>
+                Add
+            </div>
+        </div>
+
+        <div class="ui labels row" v-show="subredditPresent">
+            <div class="row" id="label-title">Selected subreddits:</div>
+            <!--<a class="ui label" v-for="subreddit in selectedSubreddits">
+                {{subreddit}}<i @click="removeSubreddit" class="delete icon" data-value="{{subreddit}}"></i>
+            </a>-->
+            <subreddit-label v-for="sub in selectedSubreddits" :subreddit="sub"></subreddit-label>
+            <a class="ui blue label" @click="toggleBookmarkLink">
+                Get bookmark link
+            </a>
+        </div>
+        <div class="row" v-show="showBookmarkLink">
+            <div id="bookmark-link">{{ bookmarkLink }}</div>
+        </div>
+
+
+        <!-- Cards -->
+        <card v-for="picture in pictures" :picture="picture" track-by="id"></card>
+
+        <div class="ui tiny message green" v-for="sub in selectedSubreddits" v-if="sub.loading">
+            {{ sub.name }} is loading...
+        </div>
+
+        <div style="margin-bottom: 5em;"></div>
+    </div>
+    {% endverbatim %}
+</script>

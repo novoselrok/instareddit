@@ -1,0 +1,13 @@
+<script type="text/x-template" id="subreddit-label-template">
+    {% verbatim %}
+    <div class="ui label">
+        {{subreddit.name}}
+        <span v-if="subreddit.loading">
+            <div class="ui active mini inline loader"></div>
+        </span>
+        <span v-else>
+            <i @click="notify" class="delete icon" data-value="{{subreddit.name}}"></i>
+        </span>
+    </div>
+    {% endverbatim %}
+</script>
