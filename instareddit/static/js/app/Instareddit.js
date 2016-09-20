@@ -58,7 +58,7 @@ define(['jquery', 'vue.min', 'vue-resource.min', 'gfycat'], function ($, Vue, Vu
                     }
 
                     this.pictures = this.pictures.filter(function (o) {
-                        return o.subreddit !== subreddit;
+                        return o.subreddit.toLowerCase() !== subreddit.toLowerCase();
                     });
                 }
             },
@@ -73,7 +73,13 @@ define(['jquery', 'vue.min', 'vue-resource.min', 'gfycat'], function ($, Vue, Vu
                     this.$http.get("/subreddit-data/", {params: {subreddit: subreddit}})
                         .then(function (data) {
                             this.pictures = this.pictures.concat(data.data["submissions"]);
-                            Vue.nextTick(gfyCollection.init);
+                            Vue.nextTick(function () {
+                                try {
+                                    gfyCollection.init();
+                                } catch (e) {
+                                    console.log("Gfycat not loaded");
+                                }
+                            });
                             subredditLabel.loading = false;
                         }, function (err) {
                             console.log(err);
@@ -97,7 +103,7 @@ define(['jquery', 'vue.min', 'vue-resource.min', 'gfycat'], function ($, Vue, Vu
                     this.showBookmarkLink = false;
                 },
                 toggleBookmarkLink: function (e) {
-                    this.showBookmarkLink = ! this.showBookmarkLink;
+                    this.showBookmarkLink = !this.showBookmarkLink;
                 },
                 shuffle: function (array) {
                     var counter = array.length;
